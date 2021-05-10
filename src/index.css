@@ -5,9 +5,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./images/weather.jpg');
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.searchBox{
+  width: 30%;
+  border-radius: 10px;
+  appearance: none;
+  background: rgb(230, 221, 221);
+}
+.searchButton{
+  border-radius: 10px;
 }
