@@ -8,7 +8,7 @@ class Title extends Component {
         this.state = {
             weatherData: '',
             weatherCity: '',
-            date: '',
+            cloud: '',
             cityInput: '',
         }
     }
@@ -32,18 +32,20 @@ class Title extends Component {
         const url= `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=1f571e6ea89f4384e58484fa23c91070`
 
         try{
+            // fetching the data from the api url
             const response = await fetch(url);
+            // converting the data to json
             const weather = await response.json();
             console.log(weather);
-            // (K − 273.15) × 9/5 + 32 = °F
+            // API gives the temperature in kelvin so it has to be converted to fahrenheit
             let tempK = weather.main.temp;
-            // converting the tempK to F
+            // converting the tempK to F. Equation is (K − 273.15) × 9/5 + 32 = °F
             let tempF = (tempK - 273.15) * 9/5 + 32
-            
+            //  changing the data in state to update it with the fetched data
             this.setState({
                 weatherData: tempF.toFixed(0),
                 weatherCity: weather.name,
-                date: '',
+                cloud: '',
 
             })
         }
@@ -62,7 +64,9 @@ class Title extends Component {
                 <input className="searchBox" type="text" placeholder="Enter city here..." onChange={(event)=>{this.changeCityInput(event.target.value)}}/>
                 {/* button that has a function to call on the weather api */}
                 <button className="searchButton" onClick={()=>this.getWeather()}>Search</button>
+                {/* component that shows the city we searched */}
                 <WeatherCity city={this.state.weatherCity}/>
+                {/* component that renders the city's weather */}
                 <WeatherCall data={this.state.weatherData}/>
             </div>
         );
