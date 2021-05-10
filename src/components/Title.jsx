@@ -29,7 +29,7 @@ class Title extends Component {
 
         console.log("getting data");
         // variable for the url that will make our api call
-        const url= `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=1f571e6ea89f4384e58484fa23c91070`
+        const url= `//api.openweathermap.org/data/2.5/weather?q=${query}&appid=1f571e6ea89f4384e58484fa23c91070`
 
         try{
             // fetching the data from the api url
