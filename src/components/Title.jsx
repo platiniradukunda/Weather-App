@@ -37,15 +37,17 @@ class Title extends Component {
             // converting the data to json
             const weather = await response.json();
             console.log(weather);
+            console.log(weather.weather[0].description);
             // API gives the temperature in kelvin so it has to be converted to fahrenheit
             let tempK = weather.main.temp;
             // converting the tempK to F. Equation is (K − 273.15) × 9/5 + 32 = °F
             let tempF = (tempK - 273.15) * 9/5 + 32
             //  changing the data in state to update it with the fetched data
             this.setState({
+                // rounding the temperature to zero decimal places
                 weatherData: tempF.toFixed(0),
                 weatherCity: weather.name,
-                cloud: '',
+                cloud: weather.weather[0].description,
 
             })
         }
@@ -65,9 +67,9 @@ class Title extends Component {
                 {/* button that has a function to call on the weather api */}
                 <button className="searchButton" onClick={()=>this.getWeather()}>Search</button>
                 {/* component that shows the city we searched */}
-                <WeatherCity city={this.state.weatherCity}/>
+                <WeatherCity city={this.state.weatherCity} />
                 {/* component that renders the city's weather */}
-                <WeatherCall data={this.state.weatherData}/>
+                <WeatherCall data={this.state.weatherData} clouds={this.state.cloud}/>
             </div>
         );
     }

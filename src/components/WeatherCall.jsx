@@ -6,7 +6,8 @@ class WeatherCall extends Component {
         return (
             <div>
                 {/* Rendering the data to the DOM */}
-                <h1>{this.props.data} &deg;</h1>     
+                <h3>{this.props.clouds}</h3> 
+                <h1>{this.props.data} &deg;</h1>    
             </div> 
         );
     }
