@@ -8,6 +8,7 @@ class Title extends Component {
         this.state = {
             weatherData: '',
             weatherCity: '',
+            weatherCountry: '',
             cloud: '',
             cityInput: '',
         }
@@ -27,26 +28,27 @@ class Title extends Component {
         // variable for what I typed in search box
         const query = this.state.cityInput;
 
-        console.log("getting data");
         // variable for the url that will make our api call
         const url= `//api.openweathermap.org/data/2.5/weather?q=${query}&appid=1f571e6ea89f4384e58484fa23c91070`
 
         try{
             // fetching the data from the api url
             const response = await fetch(url);
+
             // converting the data to json
             const weather = await response.json();
-            console.log(weather);
-            console.log(weather.weather[0].description);
+            
             // API gives the temperature in kelvin so it has to be converted to fahrenheit
             let tempK = weather.main.temp;
             // converting the tempK to F. Equation is (K − 273.15) × 9/5 + 32 = °F
             let tempF = (tempK - 273.15) * 9/5 + 32
+            
             //  changing the data in state to update it with the fetched data
             this.setState({
                 // rounding the temperature to zero decimal places
                 weatherData: tempF.toFixed(0),
                 weatherCity: weather.name,
+                weatherCountry: weather.sys.country,
                 cloud: weather.weather[0].description,
 
             })

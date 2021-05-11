@@ -23,3 +23,8 @@ code {
 .searchButton{
   border-radius: 10px;
 }
+.city{
+  color: black;
+  font-size: 2em;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5)
+}

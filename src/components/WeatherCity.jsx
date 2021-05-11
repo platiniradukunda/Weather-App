@@ -5,7 +5,7 @@ class WeatherCity extends Component {
         return (
             <div>
                 {/* Rendering the city to the DOM */}
-                <h1>{this.props.city}</h1>
+                <h1 className="city">{this.props.city}</h1>
             </div>
         );
     }
