@@ -8,7 +8,6 @@ class Title extends Component {
         this.state = {
             weatherData: '',
             weatherCity: '',
-            weatherCountry: '',
             cloud: '',
             cityInput: '',
         }
@@ -41,14 +40,14 @@ class Title extends Component {
             // API gives the temperature in kelvin so it has to be converted to fahrenheit
             let tempK = weather.main.temp;
             // converting the tempK to F. Equation is (K − 273.15) × 9/5 + 32 = °F
-            let tempF = (tempK - 273.15) * 9/5 + 32
-            
+             // rounding the temperature to zero decimal places using toFixed
+            let tempF = `${((tempK - 273.15) * 9/5 + 32).toFixed(0)} °`;
+    
             //  changing the data in state to update it with the fetched data
             this.setState({
-                // rounding the temperature to zero decimal places
-                weatherData: tempF.toFixed(0),
+                weatherData: tempF,
                 weatherCity: weather.name,
-                weatherCountry: weather.sys.country,
+                // weatherCountry: weather.sys.country,
                 cloud: weather.weather[0].description,
 
             })
