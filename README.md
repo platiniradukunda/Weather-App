@@ -1,7 +1,7 @@
 # Weather React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This is a weather application that gets city data from an API. When a city is enter and the search button is clicked, data is fetched from an API.
+This is a weather application that gets city data from an API. When a city is entered and the search button is clicked, data is fetched from an API.
 The data is rendered to the DOM using state components. State and props are used between the parent and children components to access the data. 
 
 # Technologies used for the Application
